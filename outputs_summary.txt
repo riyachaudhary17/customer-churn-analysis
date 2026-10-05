@@ -1,0 +1,116 @@
+ROWS: 7043 | CHURN RATE: 26.54%
+
+DESCRIPTIVE STATS (numeric) by churn:
+       tenure        MonthlyCharges        TotalCharges         
+        mean median           mean median         mean   median
+Churn                                                          
+No     37.57   38.0          61.27  64.43      2549.91  1679.52
+Yes    17.98   10.0          74.44  79.65      1531.80   703.55
+
+CHURN BY Contract:
+                 count  churn_pct
+Contract                        
+Month-to-month   3875      42.71
+One year         1473      11.27
+Two year         1695       2.83
+
+CHURN BY InternetService:
+                  count  churn_pct
+InternetService                  
+Fiber optic       3096      41.89
+DSL               2421      18.96
+No                1526       7.40
+
+CHURN BY TechSupport:
+                      count  churn_pct
+TechSupport                          
+No                    3473      41.64
+Yes                   2044      15.17
+No internet service   1526       7.40
+
+CHURN BY OnlineSecurity:
+                      count  churn_pct
+OnlineSecurity                       
+No                    3498      41.77
+Yes                   2019      14.61
+No internet service   1526       7.40
+
+CHURN BY PaymentMethod:
+                            count  churn_pct
+PaymentMethod                              
+Electronic check            2365      45.29
+Mailed check                1612      19.11
+Bank transfer (automatic)   1544      16.71
+Credit card (automatic)     1522      15.24
+
+CHURN BY PaperlessBilling:
+                   count  churn_pct
+PaperlessBilling                  
+Yes                4171      33.57
+No                 2872      16.33
+
+CHURN BY SeniorCitizen:
+                count  churn_pct
+SeniorCitizen                  
+1               1142      41.68
+0               5901      23.61
+
+CHURN BY Partner:
+          count  churn_pct
+Partner                  
+No        3641      32.96
+Yes       3402      19.66
+
+CHURN BY Dependents:
+             count  churn_pct
+Dependents                  
+No           4933      31.28
+Yes          2110      15.45
+
+CHURN BY tenure_bucket:
+                count  churn_pct
+tenure_bucket                  
+0-12            2186      47.44
+13-24           1024      28.71
+25-48           1594      20.39
+49-72           2239       9.51
+
+PEARSON CORRELATION WITH CHURN:
+ tenure           -0.352
+MonthlyCharges    0.193
+TotalCharges     -0.198
+churn             1.000
+
+TOP 8 POSITIVE (raise churn):
+ InternetService_Fiber optic       0.308
+PaymentMethod_Electronic check    0.302
+MonthlyCharges                    0.193
+PaperlessBilling_Yes              0.192
+SeniorCitizen                     0.151
+StreamingTV_Yes                   0.063
+StreamingMovies_Yes               0.061
+MultipleLines_Yes                 0.040
+
+TOP 8 NEGATIVE (lower churn):
+ tenure                                 -0.352
+Contract_Two year                      -0.302
+OnlineSecurity_No internet service     -0.228
+OnlineBackup_No internet service       -0.228
+TechSupport_No internet service        -0.228
+StreamingMovies_No internet service    -0.228
+DeviceProtection_No internet service   -0.228
+InternetService_No                     -0.228
+
+CHI-SQUARE TESTS (H0: churn independent of feature):
+  Contract           chi2=  1184.6  p=5.86e-258  -> significant
+  InternetService    chi2=   732.3  p=9.57e-160  -> significant
+  TechSupport        chi2=   828.2  p=1.44e-180  -> significant
+  PaymentMethod      chi2=   648.1  p=3.68e-140  -> significant
+  PaperlessBilling   chi2=   258.3  p=4.07e-58  -> significant
+  gender             chi2=     0.5  p=4.87e-01  -> NOT significant
+  Welch t-test tenure churned vs retained: t=-34.8, p=1.20e-232
+  Welch t-test monthly charges churned vs retained: t=18.4, p=8.59e-73
+
+HIGH-RISK SEGMENT (month-to-month, tenure<=12m): customers=1994 (28.3% of base), churn=51.4%
+MONTHLY REVENUE LOST TO CHURN: 139131 (30.5% of total monthly revenue)
+FIBER: churn with TechSupport=No: 49.4% vs TechSupport=Yes: 22.6%
